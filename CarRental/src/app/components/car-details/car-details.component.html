@@ -1,0 +1,56 @@
+<app-navi></app-navi>
+<div class="container">
+  <div class="row">
+    <div class="card bg-light rounded-2 shadow overflow-hidden col-md-4 mt-4" *ngFor="let car of cars">
+      <div class="card-img d-flex justify-content-center align-items-center cursor-pointer">
+        <img src="{{ carImageUrl }}" class="card-img-top product" alt="Rent {{ car.brandName }} {{
+            car.carName
+          }} - ReCapProject" routerLink="/cars/{{car.carId}}" />
+      </div>
+      <div class="card-body">
+        <span class="model-year border border-secondary text-muted rounded-1 px-3 fw-light">
+          {{ car.modelYear }}
+        </span>
+        <h5 class="card-title">
+          {{ car.brandName }} {{ car.carName }}
+        </h5>
+        <p class="mt-1 card-text text-primary fs-3">${{ car.dailyPrice }}</p>
+
+      </div>
+    </div>
+
+    <ul class="list-group col-md-8 w-25 mt-4 description" *ngFor="let car of cars">
+      <li class="list-group-item"><b>Marka:</b> {{car.brandName}}</li>
+      <li class="list-group-item"><b>Model:</b> {{car.carName}}</li>
+      <li class="list-group-item"><b>Renk :</b> {{car.colorName}}</li>
+      <li class="list-group-item"><b>Açıklama:</b> {{car.description}}</li>
+      <li class="list-group-item"><b>Model Yılı:</b> {{car.modelYear}}</li>
+      <li class="list-group-item"><b>Günlük Fiyat:</b> ${{car.dailyPrice}}</li>
+    </ul>
+
+    <div class="card w-50 h-25 date-card">
+      <div class="card-body">
+        <form [formGroup]="rentAddForm">
+          <div class="form-group row">
+            <label for="example-date-input" class="col-2 col-form-label">Date</label>
+            <div class="col-10">
+              <input class="form-control" type="date" formControlName="rentDate" min="2021-04-10" max="2021-12-31" value="2021-04-10"
+                id="rent-date-input">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="example-date-input" class="col-2 col-form-label">Date</label>
+            <div class="col-10">
+              <input class="form-control" formControlName="returnDate" type="date" min="2021-04-10" max="2021-12-31" value="2021-04-10"
+                id="return-date-input">
+            </div>
+          </div>
+          <button class="btn btn-primary w-100 mt-3" (click)="rentalAdd()">
+            Rent Now
+          </button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>

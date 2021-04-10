@@ -1,0 +1,24 @@
+<div class="mb-3">
+  <label for="filterText" class="form-label">Araba Ara</label>
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Araba arayınız">
+</div>
+<div *ngIf="filterText" class="alert alert-success">
+  {{filterText}} aradınız.
+</div>
+<p class="text-muted mt-1">Kiralamalar</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Araba adı</th>
+      <th>Kiralam tarihi</th>
+      <th>Dönüş tarihi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let rental of rentals | filterPipe:filterText">
+      <td>{{ rental.carName }}</td>
+      <td>{{ rental.rentDate }}</td>
+      <td>{{ rental.returnDate }}</td>
+    </tr>
+  </tbody>
+</table>

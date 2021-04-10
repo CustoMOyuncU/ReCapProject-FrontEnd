@@ -1,0 +1,17 @@
+#brands{
+    border-radius: 15px;
+}
+
+#colors{
+    border-radius: 15px;
+}
+
+#filter-btn{
+    transition: background 1s,border 1s;
+}
+
+#filter-btn:hover{
+    background-color: red;
+    transition: background 1s,border 1s;
+    border-color: red;
+}

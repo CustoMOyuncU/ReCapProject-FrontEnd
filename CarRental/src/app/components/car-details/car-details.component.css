@@ -1,0 +1,14 @@
+*{
+    box-sizing: border-box;
+}
+.product{
+    width: 380px;
+}
+
+.description{
+    margin-left:auto
+}
+
+.date-card{
+    margin-left: auto;
+}

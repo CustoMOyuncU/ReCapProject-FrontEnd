@@ -1,0 +1,11 @@
+<label for="color-option">Renkler</label>
+<select id="color-option" class="form-select form-select-sm" aria-label=".form-select-sm example">
+    <option selected>Open this select menu</option>
+    <option (click)="setCurrentColor(color)" *ngFor="let color of colors" routerLink="/cars/search{{color.colorId}}">{{color.colorName}} </option>
+
+  </select>
+
+  <ul class="list-group">
+    <li (click)="setCurrentColor(color)" *ngFor="let color of colors" routerLink="/cars/search/{{color.colorId}}" class="list-group-item">{{color.colorName}}</li>
+  </ul>
+

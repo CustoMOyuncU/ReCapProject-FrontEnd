@@ -1,0 +1,6 @@
+<label for="brand-option">Markalar</label>
+<select id="brand-option" [(ngModel)]="currentBrandId" class="form-select form-select-sm" aria-label=".form-select-sm example">
+    <option [selected]="cleanCurrentBrandId()">Bir Marka Seçiniz</option>
+    <option *ngFor="let brand of brands" [routerLink]="setRouterLink()" value="brand.brandId" [selected]="getCurrentBrandId(brand)">{{brand.brandName}}</option>
+
+  </select>

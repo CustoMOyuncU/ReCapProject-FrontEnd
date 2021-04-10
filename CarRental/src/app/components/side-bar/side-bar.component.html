@@ -1,0 +1,22 @@
+<form>
+    <div class="col">
+        <label for="colors">Renkler</label>
+        <select name="colors" id="colors" class="form-select form-select-sm" [(ngModel)]="colorId">
+            <option selected value="-1">All</option>
+            <option *ngFor="let color of colors" [value]="color.colorId">
+                {{color.colorName}}</option>
+        </select>
+    </div>
+    <div class="col mb-3">
+        <label for="brands">Markalar</label>
+        <select name="brands" id="brands" class="form-select form-select-sm" [(ngModel)]="brandId">
+            <option selected value="-1">All</option>
+            <option *ngFor="let brand of brands" [value]="brand.brandId">
+                {{brand.brandName}}</option>
+        </select>
+    </div>
+
+    <button id="filter-btn" [routerLink]="setRouterLink(colorId,brandId)" class="btn btn-primary col-md-4"
+        (click)="getFilterBtn(colorId,brandId)">Filter</button>
+
+</form>
