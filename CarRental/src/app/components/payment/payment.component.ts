@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup,FormControl,FormBuilder,Validator} from "@angular/forms"
+import {FormGroup,FormControl,FormBuilder,Validator, Validators} from "@angular/forms"
 
 @Component({
   selector: 'app-payment',
@@ -10,13 +10,25 @@ export class PaymentComponent implements OnInit {
 
   creditAddForm:FormGroup
 
-  constructor() { }
+  constructor(
+    private formBuilder:FormBuilder
+  ) { }
 
   ngOnInit(): void {
+    this.createCardAddForm()
   }
 
-  creditCardControl(){
-    
+  createCardAddForm(){
+    this.creditAddForm = this.formBuilder.group({
+      cardNumber:["",Validators.required],
+      cvv:["",Validators.required],
+      expiryDate:["",Validators.required]
+    })
+  }
+
+  pay(){
+    console.log(this.creditAddForm.value)
+    let cardModule = Object.assign({},this.creditAddForm.value)
   }
 
 }

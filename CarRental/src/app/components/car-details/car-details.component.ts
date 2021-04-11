@@ -79,7 +79,7 @@ export class CarDetailsComponent implements OnInit {
     })
   }
 
-  async rentalAdd(){
+  rentalAdd(){
     if(this.authService.isAuthenticated()){
       if(this.rentAddForm.valid){
         let rentModule = Object.assign({},this.rentAddForm.value)
