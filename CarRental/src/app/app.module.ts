@@ -26,6 +26,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { RegisterComponent } from './components/register/register.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { PaymentComponent } from './components/payment/payment.component';
 
 
 export function tokenGetter(){
@@ -49,7 +50,8 @@ export function tokenGetter(){
     CarAddComponent,
     LoginComponent,
     RegisterComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,

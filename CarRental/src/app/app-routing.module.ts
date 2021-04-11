@@ -5,6 +5,7 @@ import { CarDetailsComponent } from './components/car-details/car-details.compon
 import { CarImagesComponent } from './components/car-images/car-images.component';
 import { CarComponent } from './components/car/car.component';
 import { LoginComponent } from './components/login/login.component';
+import { PaymentComponent } from './components/payment/payment.component';
 import { RegisterComponent } from './components/register/register.component';
 import { RentalComponent } from './components/rental/rental.component';
 import { UserComponent } from './components/user/user.component';
@@ -21,6 +22,8 @@ const routes: Routes = [
   {path:"carimage",component:CarImagesComponent},
   {path:"cars/:carId", component:CarDetailsComponent},
   {path:"cars/admin/add",component:CarAddComponent, canActivate:[LoginGuard]},
+
+  {path:"cars/:carId/payment",component:PaymentComponent},
 
   {path:"login",component:LoginComponent},
   {path:"register",component:RegisterComponent}

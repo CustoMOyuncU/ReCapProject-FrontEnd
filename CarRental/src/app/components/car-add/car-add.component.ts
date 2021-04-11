@@ -34,6 +34,7 @@ export class CarAddComponent implements OnInit {
   add(){
     if(this.carAddForm.valid){
       let carModule = Object.assign({},this.carAddForm.value)
+      console.log(this.carAddForm.value)
       this.carAddService.add(carModule).subscribe(response=>{
         this.toastService.success("Ürün Eklendi","Ekleme")
       })

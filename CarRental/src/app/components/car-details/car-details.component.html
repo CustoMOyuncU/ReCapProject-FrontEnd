@@ -28,25 +28,26 @@
       <li class="list-group-item"><b>Günlük Fiyat:</b> ${{car.dailyPrice}}</li>
     </ul>
 
-    <div class="card w-50 h-25 date-card">
+    <div class="card w-50 h-25 date-card" *ngFor="let car of cars">
       <div class="card-body">
         <form [formGroup]="rentAddForm">
+          
           <div class="form-group row">
-            <label for="example-date-input" class="col-2 col-form-label">Date</label>
-            <div class="col-10">
-              <input class="form-control" type="date" formControlName="rentDate" min="2021-04-10" max="2021-12-31" value="2021-04-10"
+            <label for="example-date-input" class="col-3 col-form-label">Başlangıç</label>
+            <div class="col-9">
+              <input class="form-control" type="datetime-local" formControlName="rentDate" min="2021-04-10" max="2021-12-31" value="2020-04-11"
                 id="rent-date-input">
             </div>
           </div>
           <div class="form-group row">
-            <label for="example-date-input" class="col-2 col-form-label">Date</label>
-            <div class="col-10">
-              <input class="form-control" formControlName="returnDate" type="date" min="2021-04-10" max="2021-12-31" value="2021-04-10"
+            <label for="example-date-input" class="col-3 col-form-label">Bitiş</label>
+            <div class="col-9">
+              <input class="form-control" formControlName="returnDate" type="datetime-local" min="2021-04-10" max="2021-12-31" value="2020-04-11"
                 id="return-date-input">
             </div>
           </div>
           <button class="btn btn-primary w-100 mt-3" (click)="rentalAdd()">
-            Rent Now
+            Kirala
           </button>
         </form>
 

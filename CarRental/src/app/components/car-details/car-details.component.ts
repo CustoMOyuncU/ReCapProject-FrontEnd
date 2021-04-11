@@ -8,6 +8,7 @@ import {FormGroup,FormBuilder,FormControl,Validator, Validators} from "@angular/
 import { AuthService } from 'src/app/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { RentalService } from 'src/app/services/rental.service';
+import { Rental } from 'src/app/models/rental';
 
 @Component({
   selector: 'app-car-details',
@@ -15,11 +16,15 @@ import { RentalService } from 'src/app/services/rental.service';
   styleUrls: ['./car-details.component.css'],
 })
 export class CarDetailsComponent implements OnInit {
+  
   cars: Car[];
   carImage: CarImage;
   carImageUrl: string;
   rentAddForm:FormGroup
+  strUserId:string
   userId:number
+  carID:number
+
   constructor(
     private toastrService:ToastrService,
     private carImageService: CarImageService,
@@ -37,12 +42,10 @@ export class CarDetailsComponent implements OnInit {
         this.getCarById(params["carId"]);
         this.getCarImage(params["carId"])
         this.createRentalAddFrom(params["carId"])
+        
         console.log(this.cars)
       }
-      
-      
     })
-    
   }
 
   getCarImage(carId:number) {
@@ -54,8 +57,9 @@ export class CarDetailsComponent implements OnInit {
           this.carImage.id
         );
       });
-      this.userId = this.authService.getUserIdByJwt()
-      console.log(this.userId)
+      this.strUserId = this.authService.getUserIdByJwt()
+      this.userId=+this.strUserId
+      console.log(typeof this.userId)
   }
 
   getCarById(carId:number){
@@ -65,25 +69,33 @@ export class CarDetailsComponent implements OnInit {
     })
   }
 
-  createRentalAddFrom(carID:number){
-    
+  createRentalAddFrom(strcarId:string){
+    this.carID=+strcarId
     this.rentAddForm = this.formBuilder.group({
-      carId:[carID,Validators.required],
+      carId:[this.carID,Validators.required],
       userId:[this.userId,Validators.required],
       rentDate:["",Validators.required],
       returnDate:["",Validators.required]
     })
   }
 
-  rentalAdd(){
+  async rentalAdd(){
     if(this.authService.isAuthenticated()){
-      let rentModule = Object.assign({},this.rentAddForm.value)
-      this.rentalService.addRental(rentModule).subscribe(response=>{
-        this.toastrService.success("Kiralama Başarılı","Kiralama")
-      })
+      if(this.rentAddForm.valid){
+        let rentModule = Object.assign({},this.rentAddForm.value)
+        console.log(this.rentAddForm.value)
+        this.rentalService.isRentable(rentModule).subscribe(response=>{
+          this.toastrService.info("Ödeme bilgilerinizi giriniz","Sistem")
+          this.router.navigate(["cars/"+this.carID+"/payment"])
+        },responseError=>{
+          this.toastrService.error(responseError.error.message,"Hata")
+        })
+      }
     }else{
       this.toastrService.info("Araba Kiralamak İçin Giriş Yapın","Giriş Yapılmadı")
       this.router.navigate(["login"])
     }
   }
+
+
 }
