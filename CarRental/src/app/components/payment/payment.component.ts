@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup,FormControl,FormBuilder,Validator, Validators} from "@angular/forms"
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { CreditService } from 'src/app/services/credit.service';
 
 @Component({
   selector: 'app-payment',
@@ -11,7 +14,10 @@ export class PaymentComponent implements OnInit {
   creditAddForm:FormGroup
 
   constructor(
-    private formBuilder:FormBuilder
+    private formBuilder:FormBuilder,
+    private creditService:CreditService,
+    private toastrService:ToastrService,
+    private route:Router
   ) { }
 
   ngOnInit(): void {
@@ -20,15 +26,20 @@ export class PaymentComponent implements OnInit {
 
   createCardAddForm(){
     this.creditAddForm = this.formBuilder.group({
-      cardNumber:["",Validators.required],
-      cvv:["",Validators.required],
+      cardNumber:["",Validators.maxLength(16)],
+      cvv:["",Validators.maxLength(3)],
       expiryDate:["",Validators.required]
     })
   }
 
   pay(){
     console.log(this.creditAddForm.value)
-    let cardModule = Object.assign({},this.creditAddForm.value)
+    
+    if(this.creditAddForm.valid){
+      let cardModule = Object.assign({},this.creditAddForm.value)
+      this.toastrService.success("Ödeme Başarılı","Başarı")
+      this.route.navigate([""])
+    }
   }
 
 }
