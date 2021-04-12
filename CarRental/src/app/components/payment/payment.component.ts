@@ -28,8 +28,8 @@ export class PaymentComponent implements OnInit {
 
   createCardAddForm(){
     this.creditAddForm = this.formBuilder.group({
-      cardNumber:["",Validators.maxLength(16),Validators.minLength(16)],
-      cvv:["",Validators.maxLength(3),Validators.minLength(16)],
+      cardNumber:["",Validators.max(16)],
+      cvv:["",Validators.max(3)],
       expiryDate:["",Validators.required]
     })
   }
@@ -47,6 +47,8 @@ export class PaymentComponent implements OnInit {
         this.route.navigate([""])
       })
       
+    }else{
+      this.toastrService.error("Bilgilerinizi doğru girdiğinizden emin olun","Hata")
     }
   }
 
