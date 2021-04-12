@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
@@ -17,7 +18,8 @@ export class NaviComponent implements OnInit {
 
   constructor(
     private authService:AuthService,
-    private userService:UserService
+    private userService:UserService,
+    private toastrService:ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -37,6 +39,14 @@ export class NaviComponent implements OnInit {
       this.dataLoaded=true
       this.authenticated=true
     })
+  }
+
+  deleteToken(){
+    localStorage.removeItem("token")
+    if(this.authService.isAuthenticated){
+      this.toastrService.info("Çıkış yapıldı","Sistem")
+    }
+    
   }
 
 }

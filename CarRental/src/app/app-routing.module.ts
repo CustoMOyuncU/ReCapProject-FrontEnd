@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AccountComponent } from './components/account/account.component';
 import { CarAddComponent } from './components/car-add/car-add.component';
 import { CarDetailsComponent } from './components/car-details/car-details.component';
 import { CarImagesComponent } from './components/car-images/car-images.component';
@@ -14,7 +15,10 @@ import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
   {path:"",pathMatch:"full",component:CarComponent},
+  {path:"home",component:CarComponent},
+
   {path:"users",component:UserComponent},
+  {path:"account",component:AccountComponent},
   {path:"rentals",component:RentalComponent},
   {path:"cars/search/color/:colorId",component:CarComponent},
   {path:"cars/search/brand/:brandId",component:CarComponent},

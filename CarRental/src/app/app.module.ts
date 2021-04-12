@@ -27,6 +27,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { RegisterComponent } from './components/register/register.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { AccountComponent } from './components/account/account.component';
 
 
 export function tokenGetter(){
@@ -51,7 +52,8 @@ export function tokenGetter(){
     LoginComponent,
     RegisterComponent,
     SpinnerComponent,
-    PaymentComponent
+    PaymentComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
