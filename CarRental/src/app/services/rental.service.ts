@@ -10,6 +10,8 @@ import { ResponseModel } from '../models/responseModel';
 })
 export class RentalService {
 
+  rent:Rental
+
   apiUrl = 'https://localhost:44358/api/rentals/';
   constructor(private httpClient: HttpClient) {}
 
@@ -22,6 +24,8 @@ export class RentalService {
   }
 
   isRentable(rental: Rental): Observable<ResponseModel> {
+    this.rent=rental
+    console.log(rental)
     return this.httpClient.post<ResponseModel>(this.apiUrl+"isrentable",rental);
   }
 }

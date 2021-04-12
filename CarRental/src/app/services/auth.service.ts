@@ -7,6 +7,7 @@ import { RegisterModel } from '../models/registerModel';
 import { ResponseModel } from '../models/responseModel';
 import { SingleResponseModel } from '../models/singleResponseModel';
 import { TokenModel } from '../models/tokenModel';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,10 @@ export class AuthService {
     if(this.isAuthenticated()){
       return this.jwtHelper.decodeToken(localStorage.getItem("token"))["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"];
     }
+  }
+
+  updateUser(user:User){
+    return this.httpClient.post(this.apiUrl+"updateuser",user)
   }
 
   isAuthenticated(){

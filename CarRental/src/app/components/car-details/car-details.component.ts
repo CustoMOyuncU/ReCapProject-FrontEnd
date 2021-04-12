@@ -82,7 +82,7 @@ export class CarDetailsComponent implements OnInit {
   rentalAdd(){
     if(this.authService.isAuthenticated()){
       if(this.rentAddForm.valid){
-        let rentModule = Object.assign({},this.rentAddForm.value)
+        var rentModule = Object.assign({},this.rentAddForm.value)
         console.log(this.rentAddForm.value)
         this.rentalService.isRentable(rentModule).subscribe(response=>{
           this.toastrService.info("Ödeme bilgilerinizi giriniz","Sistem")

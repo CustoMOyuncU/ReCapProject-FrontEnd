@@ -3,6 +3,7 @@ import {FormGroup,FormControl,FormBuilder,Validator, Validators} from "@angular/
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CreditService } from 'src/app/services/credit.service';
+import { RentalService } from 'src/app/services/rental.service';
 
 @Component({
   selector: 'app-payment',
@@ -16,6 +17,7 @@ export class PaymentComponent implements OnInit {
   constructor(
     private formBuilder:FormBuilder,
     private creditService:CreditService,
+    private rentService:RentalService,
     private toastrService:ToastrService,
     private route:Router
   ) { }
@@ -26,8 +28,8 @@ export class PaymentComponent implements OnInit {
 
   createCardAddForm(){
     this.creditAddForm = this.formBuilder.group({
-      cardNumber:["",Validators.maxLength(16)],
-      cvv:["",Validators.maxLength(3)],
+      cardNumber:["",Validators.maxLength(16),Validators.minLength(16)],
+      cvv:["",Validators.maxLength(3),Validators.minLength(16)],
       expiryDate:["",Validators.required]
     })
   }
@@ -37,8 +39,14 @@ export class PaymentComponent implements OnInit {
     
     if(this.creditAddForm.valid){
       let cardModule = Object.assign({},this.creditAddForm.value)
-      this.toastrService.success("Ödeme Başarılı","Başarı")
-      this.route.navigate([""])
+      let rentModule = Object.assign({},this.rentService.rent)
+      console.log(rentModule)
+      this.rentService.addRental(rentModule).subscribe(response=>{
+        this.toastrService.info(response.message,"Sistem")
+        this.toastrService.success("Ödeme Başarılı","Başarı")
+        this.route.navigate([""])
+      })
+      
     }
   }
 
