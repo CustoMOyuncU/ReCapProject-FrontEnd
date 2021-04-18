@@ -5,11 +5,13 @@
 - [Services](https://github.com/CustoMOyuncU/RecapProject-FrontEnd/tree/master/CarRental/src/app/services) : Api ile bağlantı kurulan kısımdır. İlgili componentlere enjekte edilir.
 - [Models](https://github.com/CustoMOyuncU/RecapProject-FrontEnd/tree/master/CarRental/src/app/models) : Api tarafından gelen verileri tutmak için kullanılır.
 - [Pipes](https://github.com/CustoMOyuncU/RecapProject-FrontEnd/tree/master/CarRental/src/app/pipes) : Gelen veriyi manipüle etmek için kullanılır.
-### Kullanılan Araçlar
+## Kullanılan Araçlar
 - [Angular](https://angular.io/) Front-End oluşturulurken kullanıldı.
 - [C#](https://github.com/CustoMOyuncU/ReCapProject) Back-End oluşturulurken kullanıldı.
 - [Bootstrap](https://getbootstrap.com/)
 - [JQuery](https://jquery.com/)
-Laptopum serviste olduğu için tamamını yapamadım ama ilerleyen günlerde devam edeceğim (%90 yapıldı) (eksikler: güzel bir kredi kartı doğrulaması ve iyi bir tasarım)
+### Eklenecek
+**Admin paneli ve iyi bir tasarım**
+
 
 
