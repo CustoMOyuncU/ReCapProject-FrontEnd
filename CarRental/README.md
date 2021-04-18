@@ -10,7 +10,7 @@
 - [C#](https://github.com/CustoMOyuncU/ReCapProject) Back-End oluşturulurken kullanıldı.
 - [Bootstrap](https://getbootstrap.com/)
 - [JQuery](https://jquery.com/)
-### Eklenecek
+## Eklenecek
 **Admin paneli ve iyi bir tasarım**
 
 ###### ENG
@@ -23,7 +23,7 @@
 - [Pipes](https://github.com/CustoMOyuncU/RecapProject-FrontEnd/tree/master/CarRental/src/app/pipes): Used to manipulate incoming data.
 ## Developer tools
 - [Angular](https://angular.io/) Used when creating Angular Front-End.
-- [C#](https://github.com/CustoMOyuncU/ReCapProject) Used when creating C # Back-End.
+- [C#](https://github.com/CustoMOyuncU/ReCapProject) Used when creating C# Back-End.
 - [Bootstrap](https://getbootstrap.com/)
 - [JQuery](https://jquery.com/)
 ## Will be added
