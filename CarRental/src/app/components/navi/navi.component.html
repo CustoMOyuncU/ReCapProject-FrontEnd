@@ -1,8 +1,8 @@
-<app-spinner *ngIf="!dataLoaded"></app-spinner>
-<nav class="navbar navbar-expand-md navbar-light bg-light" *ngIf="dataLoaded">
+
+<nav class="navbar navbar-expand-md navbar-light bg-light">
 
     <div class="container">
-      <a class="navbar-brand" routerLink="">Navbar</a>
+      <a class="navbar-brand" routerLink="">CarRental</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -12,11 +12,8 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" routerLink="">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="">Link</a>
-          </li>
           <li class="nav-item dropdown" *ngIf="userId">
-            <a class="nav-link dropdown-toggle" routerLink="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               {{user.firstName}} {{user.lastName}}
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -25,17 +22,14 @@
               <li><a class="dropdown-item" (click)="deleteToken()" routerLink="/home">Çıkış</a></li>
             </ul>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" style="margin-left: 920px;">
             <button type="button" class="btn btn-outline-info" *ngIf="!authenticated" routerLink="/register">Kayıt Ol</button>
           </li>
           <li class="nav-item ml-3">
             <button type="button" class="btn btn-primary ml-3" *ngIf="!authenticated" routerLink="/login">Giriş Yap</button>
           </li>
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+        
       </div>
     </div>
 

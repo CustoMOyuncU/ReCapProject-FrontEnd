@@ -28,8 +28,9 @@ export class PaymentComponent implements OnInit {
 
   createCardAddForm(){
     this.creditAddForm = this.formBuilder.group({
-      cardNumber:["",Validators.max(16)],
-      cvv:["",Validators.max(3)],
+      cardNumber:["",Validators.required],
+      password:["",Validators.required],
+      cvv:["",Validators.required],
       expiryDate:["",Validators.required]
     })
   }
